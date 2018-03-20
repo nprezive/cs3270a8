@@ -36,6 +36,9 @@ public interface CourseDAO {
     @Delete
     void delete(Course course);
 
+    @Query("DELETE FROM course")
+    void deleteAll();
+
     @Query("DELETE FROM course WHERE cid = :cid")
     void deleteByID(int cid);
 }

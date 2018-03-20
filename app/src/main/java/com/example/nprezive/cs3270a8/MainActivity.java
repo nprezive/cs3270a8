@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity
                         .commit();
             }
         });
+
+        new GetAllCoursesTask().execute(this);
     }
 
     @Override
