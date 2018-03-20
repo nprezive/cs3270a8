@@ -82,5 +82,6 @@ public class FragmentCourseList extends Fragment {
 
     public interface OnFragmentCourseListInteractionListener {
         void onFragmentCourseListInteraction(Course course);
+        void onFragmentCourseListLongClick(Course course);
     }
 }

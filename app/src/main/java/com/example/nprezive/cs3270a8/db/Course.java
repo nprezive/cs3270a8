@@ -82,4 +82,16 @@ public class Course {
     public void setCid(int cid) {
         this.cid = cid;
     }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "cid=" + cid +
+                ", id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", courseCode='" + courseCode + '\'' +
+                ", startAt='" + startAt + '\'' +
+                ", endAt='" + endAt + '\'' +
+                '}';
+    }
 }

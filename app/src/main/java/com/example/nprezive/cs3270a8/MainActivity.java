@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        new GetAllCoursesTask().execute(this);
+        GetAllCoursesTask getAllCoursesTask = new GetAllCoursesTask();
+        getAllCoursesTask.execute(this);
     }
 
     @Override
@@ -73,6 +74,11 @@ public class MainActivity extends AppCompatActivity
                 .add(android.R.id.content, frag)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void onFragmentCourseListLongClick(Course course) {
+
     }
 
     @Override

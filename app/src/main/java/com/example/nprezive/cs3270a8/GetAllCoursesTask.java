@@ -60,10 +60,15 @@ public class GetAllCoursesTask extends AsyncTask<MainActivity, Integer, String> 
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
 
-        Course[] courses = parseJson(s);
-        CourseDAO courseDAO = AppDatabase.getInstance(activity).courseDAO();
-        courseDAO.deleteAll();
-        courseDAO.insertAll(courses);
+        final Course[] courses = parseJson(s);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                CourseDAO courseDAO = AppDatabase.getInstance(activity).courseDAO();
+                courseDAO.deleteAll();
+                courseDAO.insertAll(courses);
+            }
+        }).start();
     }
 
     private Course[] parseJson(String s) {
