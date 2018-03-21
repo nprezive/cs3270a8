@@ -50,6 +50,15 @@ public class CourseListRecyclerAdapter
                     }
                 }
             });
+            holder.mView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    if (mListener != null) {
+                        mListener.onFragmentCourseListLongClick(holder.mItem);
+                    }
+                    return true;
+                }
+            });
         }
 
     }

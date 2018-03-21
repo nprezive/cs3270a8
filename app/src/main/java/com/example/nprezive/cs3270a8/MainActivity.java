@@ -6,7 +6,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.nprezive.cs3270a8.db.Course;
 
@@ -78,7 +80,24 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onFragmentCourseListLongClick(Course course) {
+//        Log.d("test", course.toString());
 
+        Bundle bundle = new Bundle();
+        bundle.putInt("cid", course.getCid());
+        bundle.putString("id", course.getId());
+        bundle.putString("name", course.getName());
+        bundle.putString("courseCode", course.getCourseCode());
+        bundle.putString("startAt", course.getStartAt());
+        bundle.putString("endAt", course.getEndAt());
+
+        FragmentAssignmentList frag = new FragmentAssignmentList();
+        frag.setArguments(bundle);
+
+        fm.beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .add(android.R.id.content, frag)
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override
